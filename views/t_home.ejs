@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Jquery Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+   <%- include('./partials/header'); %>
+
+
+
+<section class="home-grid">
+
+   <h1 class="heading">quick options</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <h3 class="title">Video and Playlist</h3>
+         <p class="likes">total Videos : <span><%= video_count %></span></p>
+         <a href="#" class="inline-btn">view video</a>
+          <!-- <p class="likes">total comments : <span>12</span></p>
+         <a href="#" class="inline-btn">view comments</a> -->
+         <p class="likes">Total playlists : <span><%= play_count %></span></p>
+         <a href="/t_playlist" class="inline-btn">view playlists</a>
+      </div>
+
+      <div class="box">
+         <h3 class="title">top categories</h3>
+         <div class="flex">
+            <a href="#"><i class="fas fa-code"></i><span>development</span></a>
+            <a href="#"><i class="fas fa-chart-simple"></i><span>business</span></a>
+            <a href="#"><i class="fas fa-pen"></i><span>design</span></a>
+            <!-- <a href="#"><i class="fas fa-chart-line"></i><span>marketing</span></a> -->
+            <a href="#"><i class="fas fa-music"></i><span>music</span></a>
+            <!-- <a href="#"><i class="fas fa-camera"></i><span>photography</span></a> -->
+            <a href="#"><i class="fas fa-cog"></i><span>software</span></a>
+            <!-- <a href="#"><i class="fas fa-vial"></i><span>science</span></a> -->
+         </div>
+      </div>
+
+      <!-- <div class="box">
+         <h3 class="title">popular topics</h3>
+         <div class="flex">
+            <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
+            <a href="#"><i class="fab fa-css3"></i><span>CSS</span></a>
+            <a href="#"><i class="fab fa-js"></i><span>javascript</span></a>
+            <a href="#"><i class="fab fa-react"></i><span>react</span></a>
+            <a href="#"><i class="fab fa-php"></i><span>PHP</span></a>
+            <a href="#"><i class="fab fa-bootstrap"></i><span>bootstrap</span></a>
+         </div>
+      </div> -->
+
+      <div class="box">
+         <h3 class="title">Upload Video</h3>
+         <p class="tutor">To Upload Your Teaching New Video Click on the Below Button</p>
+         <a href="/v_upload" class="inline-btn">Upload</a>
+      </div>
+
+      <div class="box">
+        <h3 class="title">Create a New Playlist</h3>
+        <p class="tutor">If you want to create a new playlist for your vidoes click here</p>
+        <a href="/p_create" class="inline-btn">Create Playlist</a>
+     </div>
+
+   </div>
+
+</section>
+
+
+<section class="courses">
+
+   <h1 class="heading">our courses</h1>
+
+   <div class="box-container">
+
+      <% t_playlist.forEach(element => { %>
+         
+         <div class="box">
+            <div class="tutor">
+               <img src="/backendImages/<%= element.teacher_Img %>" alt="">
+               <div class="info">
+                  <h3><%= element.teacher_Name %></h3>
+                  <!-- <span>21-10-2022</span> -->
+               </div>
+            </div>
+            <div class="thumb">
+               <img src="/backendImages/<%= element.thumbnail %>" alt="">
+               <!-- <span>10 videos</span> -->
+            </div>
+            <h3 class="title"><%= element.playlist_name %></h3>
+            <a href="/playlist_detail?playlist_name=<%= element.playlist_name %>" class="inline-btn">view playlist</a>
+         </div>
+         
+      <% }) %>
+
+      
+
+   </div>
+
+   <div class="more-btn">
+      <a href="/courses" class="inline-option-btn">view all courses</a>
+   </div>
+
+</section>
+
+
+
+<%- include('./partials/footer'); %>
+</body>
+</html>

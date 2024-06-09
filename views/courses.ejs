@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses Page</title>
+    <!-- Jquery Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+   <%- include('./partials/header'); %>
+
+
+
+<section class="courses">
+
+   <h1 class="heading">our courses</h1>
+
+   <div class="box-container">
+
+      <% t_playlist.forEach(element => { %>
+         
+         <div class="box">
+            <div class="tutor">
+               <img src="/backendImages/<%= element.teacher_Img %>" alt="">
+               <div class="info">
+                  <h3><%= element.teacher_Name %></h3>
+                  <!-- <span>21-10-2022</span> -->
+               </div>
+            </div>
+            <div class="thumb">
+               <img src="/backendImages/<%= element.thumbnail %>" alt="">
+               <!-- <span>10 videos</span> -->
+            </div>
+            <h3 class="title"><%= element.playlist_name %></h3>
+            <a href="/playlist_detail?playlist_name=<%= element.playlist_name %>" class="inline-btn">view playlist</a>
+         </div>
+         
+      <% }) %>
+
+      
+
+   </div>
+
+</section>
+
+
+
+<%- include('./partials/footer'); %>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- Jquery Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+   <%- include('./partials/header'); %>
+
+    
+<section class="teacher-profile">
+
+    <h1 class="heading">profile details</h1>
+ 
+    <div class="details">
+       <div class="tutor">
+          <img src="/backendImages/<%= teacher_detail.img %>" alt="">
+          <h3><%= teacher_detail.name %></h3>
+          <!-- <span>developer</span> -->
+       </div>
+       <div class="flex">
+         <% if (data.role=='Teacher') { %>
+            <p>total playlists : <span><%= teacher_detail.play_count %></span></p>
+          <p>total videos : <span><%= teacher_detail.v_count %></span></p>
+         <% } %>
+
+         <% if (data.role=='Student') { %>
+            <p>Save Playlist : <span><%= playlistSize %></span></p>
+         <% } %>
+          
+          <!-- <p>total likes : <span>1208</span></p>
+          <p>total comments : <span>52</span></p> -->
+       </div>
+    </div>
+ 
+ </section>
+ 
+ <section class="courses">
+ 
+    <h1 class="heading">our courses</h1>
+ 
+    <div class="box-container">
+ 
+        <% t_playlist.forEach(element => { %>
+            
+            <div class="box">
+               <div class="thumb">
+                  <img src="/backendImages/<%= element.thumbnail %>" alt="">
+                  <!-- <span>10 videos</span> -->
+               </div>
+               <h3 class="title"><%= element.playlist_name %></h3>
+               <a href="/playlist_detail?playlist_name=<%= element.playlist_name %>" class="inline-btn">view playlist</a>
+            </div>
+
+        <% }) %>
+ 
+ 
+    </div>
+ 
+ </section>
+ 
+
+
+
+<%- include('./partials/footer'); %>
+</body>
+</html>

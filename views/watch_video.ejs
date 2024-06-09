@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=video_detail.video_name  %></title>
+
+    <!-- Jquery Link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+   <!-- font awesome cdn link   -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/stylesheets/style.css">
+
+   <script src="/login_script.js"></script>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+
+
+    <section class="watch-video">
+
+        <div class="video-container">
+           <div class="video">
+              <video src="/backendImages/<%=video_detail.videoFile_name %>" controls poster="/backendImages/<%=video_detail.thumbnail %>" id="video"></video>
+           </div>
+           <h3 class="title"><%=video_detail.video_name  %></h3>
+           <div class="info">
+              <!-- <p class="date"><i class="fas fa-calendar"></i><span>22-10-2022</span></p> -->
+              <!-- <p class="date"><i class="fas fa-heart"></i><span>44 likes</span></p> -->
+           </div>
+           <div class="tutor">
+              <img src="/backendImages/<%=video_detail.teacher_Img %>" alt="">
+              <div>
+                 <h3><%=video_detail.teacher_Name  %></h3>
+                 <!-- <span>developer</span> -->
+              </div>
+           </div>
+           <form action="" method="post" class="flex">
+              <a href="/playlist_detail?playlist_name=<%= video_detail.playlist_Name %>" class="inline-btn">view playlist</a>
+              <!-- <button><i class="far fa-heart"></i><span>like</span></button> -->
+           </form>
+           <p class="description">
+              <%= video_detail.description %>
+           </p>
+        </div>
+     
+     </section>
+    
+
+
+
+
+<%- include('./partials/footer'); %>
+    <!-- custom js file link  -->
+<!-- <script src="/javascripts/script.js"></script> -->
+</body>
+</html>

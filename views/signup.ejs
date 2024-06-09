@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+
+      <!-- Jquery Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- font awesome cdn link  -->
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"> -->
+
+   <!-- custom css file link  -->
+   <!-- <link rel="stylesheet" href="/stylesheets/style.css">  -->
+
+   <script src="/registration_script.js"></script>
+</head>
+<body>
+
+   <%- include('./partials/header'); %>
+
+<section class="form-container">
+
+   <form id="signupForm" action="/signup" method="Post" enctype="multipart/form-data" > 
+    <!-- action="/signup" method="Post" enctype="multipart/form-data" -->
+      <h3> Student register now</h3>
+      <p>your name <span>*</span></p>
+      <input type="text" name="name" id="name" placeholder="enter your name" required maxlength="50" class="box" required pattern=".{6,}" title="Six or more characters">
+      <p>your phone number <span>*</span></p>
+      <input type="tel" name="phone" id="phone" placeholder="enter your phone number" required  class="box" pattern="[789][0-9]{9}" title="Enter the Correct Phone Number">
+      <p>your email <span>*</span></p>
+      <input type="email" name="email" id="email" placeholder="enter your email" required maxlength="50" class="box">
+      <input type="text" name="role" id="role" value="Student" hidden>
+      <p>your password <span>*</span></p>
+      <input type="password" name="pass" id="pass" placeholder="enter your password" required maxlength="20" class="box" title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number" required pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$">
+      <p>confirm password <span>*</span></p>
+      <input type="password" name="cpass" id="cpass" placeholder="confirm your password" required maxlength="20" class="box" onkeyup="check()">
+      <p id="pmsg"></p>
+      <p>select profile <span>*</span></p>
+      <input type="file" accept="image/*"  class="box" name="profileImg">
+      <input type="Submit" value="register new" name="submit" class="btn" >
+      <p id="msg" style="color: red; text-align:center; font-weight:bold ; " ></p>
+   </form>
+   
+
+</section>
+
+
+<script>
+
+
+function check() {
+   var pass = document.getElementById("pass").value;
+   var cpass = document.getElementById("cpass"); // Get the DOM element directly, not its value
+   var pmsg = document.getElementById("pmsg");
+   
+   //console.log(pass, cpass.value);
+
+    if (cpass.value !== pass) { // Compare values of pass and cpass
+        text = "Passwords do not match";
+        pmsg.style.color = "red";
+        pmsg.innerHTML=text;
+    } else {
+        text = "Passwords match";
+        pmsg.style.color = "green";
+        pmsg.innerHTML=text;
+
+            setTimeout(function() {
+               //pmsg.hidden = true;
+               pmsg.innerHTML="";
+            }, 5000);
+    }
+
+
+}
+
+
+
+</script>
+
+
+
+<%- include('./partials/footer'); %>
+
+    <!-- custom js file link  -->
+<!-- <script src="/javascripts/script.js"></script>  -->
+
+   
+</body>
+</html>

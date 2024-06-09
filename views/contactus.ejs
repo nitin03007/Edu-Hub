@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- Jquery Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="/contactus_script.js"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "GSP3fVGCh_3LrV_Eo",
+      });
+   })();
+</script>
+</head>
+<body>
+   <%- include('./partials/header'); %>
+
+   <section class="contact">
+
+    <div class="row">
+ 
+       <div class="image">
+          <img src="images/contact-img.svg" alt="">
+       </div>
+ 
+       <form id="contactusForm">
+          <h3>get in touch</h3>
+          <input type="text" placeholder="enter your name" name="name" id="name" required maxlength="50" class="box">
+          <input type="email" placeholder="enter your email" name="email" id="email" required maxlength="50" class="box">
+          <input type="number" placeholder="enter your number" name="phone" id="phone" required maxlength="50" class="box">
+          <textarea name="msg" class="box" placeholder="enter your message" id="msg" required maxlength="1000" cols="30" rows="10"></textarea>
+          <input type="submit" value="send message" class="inline-btn" name="submit">
+       </form>
+ 
+    </div>
+ 
+    <div class="box-container">
+ 
+       <div class="box">
+          <i class="fas fa-phone"></i>
+          <h3>phone number</h3>
+          <a href="tel:1234567890">123-456-7890</a>
+       </div>
+       
+       <div class="box">
+          <i class="fas fa-envelope"></i>
+          <h3>email address</h3>
+          <a href="mailto:nitingupta03007@gmail.com">nitingupta03007@gmail.come</a>
+       </div>
+ 
+       <!-- <div class="box">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>office address</h3>
+          <a href="#">flat no. 1, a-1 building, jogeshwari, mumbai, india - 400104</a>
+       </div> -->
+ 
+    </div>
+ 
+ </section>
+
+<%- include('./partials/footer'); %>
+</body>
+</html>

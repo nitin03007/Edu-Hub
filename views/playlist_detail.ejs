@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Jquery Link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+   <!-- font awesome cdn link   -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/stylesheets/style.css">
+
+   <!-- <script src="/login_script.js"></script> -->
+
+   <script src="/playlist_save_script.js"></script>
+
+   <style>
+      #save-btn{
+          background-color:#76e6ff;
+      }
+  
+      #save-btn:hover{
+          background-color:rgb(26, 63, 199);
+      }
+  
+     </style>
+
+
+</head>
+<body>
+    <%- include('./partials/header'); %>
+
+
+    
+<section class="playlist-details">
+
+   <h1 class="heading">playlist details</h1>
+
+   <div class="row">
+
+      <div class="column">
+         <!-- <form action="" method="post" class="save-playlist">
+            <button type="submit"><i class="far fa-bookmark"></i> <span>save playlist</span></button>
+         </form> -->
+   
+         <div class="thumb">
+            <img src="/backendImages/<%= playlist.thumbnail %>" alt="">
+            <!-- <span>10 videos</span> -->
+         </div>
+      </div>
+      <div class="column">
+         <div class="tutor">
+            <img src="/backendImages/<%= playlist.teacher_Img %>" alt="">
+            <div>
+               <h3><%= playlist.teacher_Name %></h3>
+               <!-- <span>21-10-2022</span> -->
+            </div>
+         </div>
+   
+         <div class="details">
+            <h3><%= playlist.playlist_name %></h3>
+            <p><%= playlist.description %></p>
+            <a href="/view_profile?teacher_email=<%= playlist.teacher_Email %>&teacher_name=<%= playlist.teacher_Name %>" class="inline-btn">view profile</a>
+            
+            <% if (data.role=='Student') { %>
+               <div class="inline-btn" style="padding: 0;  ">
+                  <form  class="SavePlaylistForm" >
+                     <input type="text" name="student_email" value="<%= data.email %>" hidden>
+                     <input type="text" name="playlist_name" value="<%= playlist.playlist_name %>" hidden>
+                   <input type="submit" id="save-btn" name="submit" style=" font-size: inherit; color:white; cursor:pointer; padding: 10px;  border-radius:5px"  value="Save Playlist">
+                   </form>
+              </div>
+            <% } %>
+            
+            
+         </div>
+      </div>
+   </div>
+
+</section>
+
+<section class="playlist-videos">
+
+   <h1 class="heading">playlist videos</h1>
+
+   <div class="box-container">
+
+      <% playlist_detail.forEach(element => { %>
+         
+         <a class="box" href="/watch_video?video_name=<%= element.video_name %>">
+            <i class="fas fa-play"></i>
+            <img src="/backendImages/<%=element.thumbnail %>" alt="">
+            <h3><%= element.video_name %></h3>
+         </a>
+
+      <% }) %>
+
+      
+
+   </div>
+
+</section>
+
+
+
+
+<%- include('./partials/footer'); %>
+    <!-- custom js file link  -->
+<!-- <script src="/javascripts/script.js"></script> -->
+</body>
+</html>

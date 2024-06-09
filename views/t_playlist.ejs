@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+
+    <!-- Jquery Link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+   <!-- font awesome cdn link   -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/stylesheets/style.css">
+   
+   <script src="/playlist_delete_script.js"></script>
+   
+   <style>
+    #delete-btn{
+        background-color:#ff7676;
+    }
+
+    #delete-btn:hover{
+        background-color:brown;
+    }
+
+   </style>
+
+   
+</head>
+<body>
+    <%- include('./partials/header'); %>
+
+
+    <section class="courses">
+
+        <h1 class="heading">Courses Made By You</h1>
+     
+        <div class="box-container">
+            
+            <% t_playlist.forEach(element => { %>
+
+                <div class="box">
+                    <div class="tutor">
+                       <img src="/backendImages/<%=element.teacher_Img %>" alt="">
+                       <div class="info">
+                          <h3><%= element.teacher_Name %></h3>
+                          <!-- <span>21-10-2022</span> -->
+                       </div>
+                    </div>
+                    <div class="thumb">
+                       <img src="/backendImages/<%=element.thumbnail %>" alt="">
+                       <!-- <span>10 videos</span> -->
+                    </div>  
+                    <h3 class="title"><%= element.playlist_name %></h3>
+                    <a href="/playlist_detail?playlist_name=<%= element.playlist_name %>" class="inline-btn">view playlist</a>
+                    <div class="inline-btn" style="padding: 0;  ">
+                        <form  class="DeletePlaylistForm" >
+                            <input type="text" name="thumbnail" value="<%=element.thumbnail %>" hidden>
+                         <input type="text" name="playlist_name" value="<%= element.playlist_name %>" hidden>   
+                         <input type="submit" id="delete-btn" name="submit" style=" font-size: inherit; color:white; cursor:pointer; padding: 10px;  border-radius:5px"  value="Delete Playlist">
+                         </form>
+                    </div>
+                    
+                 </div>
+             
+            <% }) %>
+           
+
+           
+     
+           
+     
+        </div>
+     
+        <div class="more-btn">
+           <a href="/courses" class="inline-option-btn">view all courses</a>
+        </div>
+     
+     </section>
+
+
+
+
+<%- include('./partials/footer'); %>
+    <!-- custom js file link  -->
+<!-- <script src="/javascripts/script.js"></script> -->
+</body>
+</html>

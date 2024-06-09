@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Jquery Link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+   <!-- font awesome cdn link   -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="/stylesheets/style.css">
+
+   <script src="/playlist_script.js"></script>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+    <section class="form-container">
+        
+   <form id="playlistForm" action="/p_create" method="post" enctype="multipart/form-data">
+     <!-- enctype="multipart/form-data"  -->
+      <h3>Create a New Playlist</h3>
+      <p>Playlist Title<span>*</span></p>
+      <input type="text" name="title" placeholder="enter your Playlist Title" required maxlength="100" class="box">
+      <p>Description<span>*</span></p>
+      <textarea name="description" placeholder="enter your playlist description" id="description" cols="20" rows="5" required class="box"></textarea>
+      <p>select Playlist Thumbnail <span>*</span></p>
+      <input type="file" accept="image/*"  class="box" name="p_thumbnail">
+      <input type="text" name="teacher_email" value="<%= data.email %>" hidden>
+      <input type="text" name="teacher_Name" value="<%= data.name %>" hidden>
+      <input type="text" name="teacher_Img" value="<%= data.profileImg %>" hidden>
+      <input type="submit" value="Create New Playlist" name="submit" class="btn">
+
+   </form>
+
+</section>
+
+
+<%- include('./partials/footer'); %>
+    <!-- custom js file link  -->
+<!-- <script src="/javascripts/script.js"></script> -->
+</body>
+</html>
